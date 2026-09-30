@@ -1,0 +1,19 @@
+{
+  "name": "@agnx-sub/testhub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agnx 外置子应用胶水：TestHub Guest iframe + supervised sidecar",
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "node ./scripts/build.mjs"
+  },
+  "peerDependencies": {
+    "@getagnx/app-sdk": "*",
+    "lucide-react-native": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-unistyles": "*",
+    "react-native-svg": "*"
+  }
+}

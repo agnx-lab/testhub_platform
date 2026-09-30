@@ -1,0 +1,42 @@
+{
+  "id": "testhub",
+  "name": "TestHub",
+  "version": "0.1.0",
+  "description": "Agnx 外置：TestHub 一站式 AI 测试平台（整仓 + Guest iframe）",
+  "engines": {
+    "agnx": ">=1.0.0"
+  },
+  "main": "./dist/index.js",
+  "icon": "./.agnx/assets/testhub-icon.svg",
+  "platforms": {
+    "desktop": "supported",
+    "web": "partial",
+    "mobile": "unsupported"
+  },
+  "sidecar": {
+    "supervised": true,
+    "ensureTool": ".agnx/tools/ensure-testhub.mjs",
+    "stateFile": "testhub.json",
+    "defaultPort": 13080
+  },
+  "guest": {
+    "kind": "web",
+    "auth": "none",
+    "capabilities": ["websocket"],
+    "preferStrategy": "auto"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "id": "testhub.open",
+        "title": "TestHub"
+      }
+    ],
+    "panels": [
+      {
+        "id": "testhub.main",
+        "title": "TestHub"
+      }
+    ]
+  }
+}

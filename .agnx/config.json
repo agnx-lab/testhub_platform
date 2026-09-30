@@ -1,0 +1,10 @@
+{
+  "appId": "testhub",
+  "installState": "installed",
+  "launchMode": "packaged",
+  "source": {
+    "kind": "github",
+    "url": "https://github.com/chenjigang4167/testhub_platform"
+  },
+  "updatedAt": "2026-09-30T01:20:10.508Z"
+}
