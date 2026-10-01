@@ -19,13 +19,18 @@ DATABASES = {
     }
 }
 
+# 默认启用全模块；设 AGNX_TESTHUB_LIGHT=1 可跳过 UI/APP/压测（无重依赖时）
+_LIGHT = os.environ.get("AGNX_TESTHUB_LIGHT", "").strip() in ("1", "true", "True", "yes")
 _HEAVY_APPS = {
     "apps.ui_automation.apps.UiAutomationConfig",
     "apps.app_automation.apps.AppAutomationConfig",
     "apps.perf_testing.apps.PerfTestingConfig",
 }
-INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in _HEAVY_APPS]  # noqa: F405
-ROOT_URLCONF = "testhub_agnx_urls"
+if _LIGHT:
+    INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in _HEAVY_APPS]  # noqa: F405
+    ROOT_URLCONF = "testhub_agnx_urls"
+else:
+    ROOT_URLCONF = "testhub_agnx_urls_full"
 
 CHANNEL_LAYERS = {
     "default": {

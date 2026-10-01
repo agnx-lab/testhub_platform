@@ -335,6 +335,19 @@ const handleNavigate = (type) => {
         card_type: type
       }
     })
+    // Agnx / iframe 嵌页：必须同页 router.push。
+    // 原 window.open(_blank) 会开新窗，JWT 在 localStorage，新窗不共享登录态 → 被迫重新登录。
+    const embedded = (() => {
+      try {
+        return window.self !== window.top
+      } catch {
+        return true
+      }
+    })()
+    if (embedded) {
+      router.push(routes[type])
+      return
+    }
     const routeData = router.resolve({ path: routes[type] })
     window.open(routeData.href, '_blank')
   }

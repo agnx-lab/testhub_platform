@@ -52,9 +52,23 @@ node ~/.agnx-dev/apps/testhub/.agnx/tools/testhub-sidecar.mjs \
 
 ## 模块覆盖（当前嵌入配置）
 
-启用：用户 / 项目 / 用例 / 评审 / API 测试 / 数据工厂 / 需求分析 / LLM Judge / Monitor / MCP 管理端。  
-暂缓：UI 自动化、APP 自动化、性能测试（需全量 pip + 改回 `ROOT_URLCONF`）。
+启用：**用户 / 项目 / 用例 / 评审 / API 测试 / 数据工厂 / 需求分析 / LLM Judge / Monitor / MCP / UI 自动化 / APP 自动化 / 性能测试（路由已挂）**。
 
+依赖：venv 已装 `selenium` / `playwright` / `airtest`。真正跑 UI 用例前建议：
+
+```bash
+~/.agnx-dev/apps/data/testhub/venv/bin/python -m playwright install chromium
+```
+
+APP 自动化需本机 ADB / 模拟器。
+
+设 `AGNX_TESTHUB_LIGHT=1` 可退回轻量模式（关掉 UI/APP/压测 App）。
+
+## 嵌页导航（已修）
+
+首页卡片原用 `window.open(_blank)`。嵌在 Agnx iframe 时新窗**不共享** JWT（存在 **localStorage**，不是 Cookie）→ 弹窗要重新登录。
+
+修复：检测 `window.self !== window.top` 时改为 **`router.push` 同页跳转**（`frontend/src/views/Home.vue`）。
 ## Agnx 内打开
 
 命令面板 → **子应用** → **重新扫描** → 点 **TestHub**。  
