@@ -20,9 +20,11 @@ if (!existsSync(entry)) {
 
 const require = createRequire(import.meta.url);
 const agnxMonorepoCandidates = [
-  path.resolve("/Users/apple/Documents/github/agnx"),
+  // 宿主仓库位置：优先环境变量，其次按 app 根相对推导（外部克隆通常两者都不可用，
+  // 此时走下面的 require("esbuild") 兜底，由 .agnx/ 自己的 devDependencies 提供）。
+  process.env.AGNX_MONOREPO_ROOT,
   path.resolve(agnxRoot, "../../../../Documents/github/agnx"),
-];
+].filter((p) => typeof p === "string" && p.length > 0);
 let esbuild;
 let resolvedFrom = "";
 for (const root of agnxMonorepoCandidates) {
@@ -64,7 +66,7 @@ await esbuild.build({
     "react",
     "react-native",
     "react/jsx-runtime",
-    "@getagnx/app-sdk",
+    "@agnx-lab/app-sdk",
     "lucide-react-native",
     "react-native-unistyles",
     "react-native-svg",
