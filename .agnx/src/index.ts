@@ -1,7 +1,7 @@
 /**
  * 场景：TestHub Sub App 入口 — 导出 activate（Panel 见 panel.tsx）。
  */
-import type { WorkspaceAppHostApi, WorkspaceAppModule } from "@getagnx/app-sdk";
+import type { WorkspaceAppHostApi, WorkspaceAppModule } from "@agnx-lab/app-sdk";
 import { activate as activatePanel } from "./panel";
 import { TESTHUB_APP_ID, TESTHUB_OPEN_COMMAND_ID, TESTHUB_PANEL_ID } from "./constants";
 

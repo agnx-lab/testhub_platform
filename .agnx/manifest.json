@@ -7,7 +7,7 @@
     "agnx": ">=1.0.0"
   },
   "main": "./dist/index.js",
-  "icon": "./.agnx/assets/testhub-icon.svg",
+  "icon": "./.agnx-icon/testhub-icon.svg",
   "platforms": {
     "desktop": "supported",
     "web": "partial",
@@ -22,7 +22,9 @@
   "guest": {
     "kind": "web",
     "auth": "none",
-    "capabilities": ["websocket"],
+    "capabilities": [
+      "websocket"
+    ],
     "preferStrategy": "auto"
   },
   "contributes": {

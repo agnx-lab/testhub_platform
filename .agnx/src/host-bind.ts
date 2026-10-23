@@ -1,5 +1,5 @@
 // 场景：TestHub Host 绑定单例 — 面板共用。
-import type { WorkspaceAppHostApi } from "@getagnx/app-sdk";
+import type { WorkspaceAppHostApi } from "@agnx-lab/app-sdk";
 
 let boundHost: WorkspaceAppHostApi | null = null;
 

@@ -9,7 +9,7 @@ import {
   type ComponentType,
   type ReactElement,
 } from "react";
-import type { WorkspaceAppBrandLogoLoaderPanelProps, WorkspaceAppHostApi } from "@getagnx/app-sdk";
+import type { WorkspaceAppBrandLogoLoaderPanelProps, WorkspaceAppHostApi } from "@agnx-lab/app-sdk";
 import {
   DEFAULT_TESTHUB_FRONTEND_PORT,
   TESTHUB_APP_ID,
